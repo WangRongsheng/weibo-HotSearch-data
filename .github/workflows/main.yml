@@ -1,0 +1,25 @@
+name: 'weibo-HotSearch-data'
+
+on:
+  push:
+    branches: 
+      - master
+  schedule:
+    - cron: '0 12 * * *'
+
+jobs:
+  netease:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Checkout codes'
+      uses: actions/checkout@v2
+    - name: 'Set python'
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - name: 'Install requests'
+      run: pip install requests
+    - name: 'Install lxml'
+      run: pip install lxml
+    - name: 'motion_champion'
+      run: python v2.py
